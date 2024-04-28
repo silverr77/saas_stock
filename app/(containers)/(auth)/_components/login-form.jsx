@@ -38,8 +38,8 @@ export const LoginForm = () => {
   const onSubmit = async (data) => {
     setError("");
     setSuccess("");
-    startTransition(async () => {
-      await login(data).then((response) => {
+    startTransition(() => {
+      login(data).then((response) => {
         setError(response?.error);
         setSuccess(response?.success);
       });
