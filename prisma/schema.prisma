@@ -23,6 +23,8 @@ model User {
   Account   Account?
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
+  Space     Space?    @relation(fields: [spaceId], references: [id])
+  spaceId   String?
 }
 
 model Account {
@@ -46,4 +48,12 @@ model Account {
 
   @@unique([provider, providerAccountId])
   @@index([userId])
+}
+
+model Space {
+  id        String    @id @default(cuid())
+  name      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  User      User[]
 }
