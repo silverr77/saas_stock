@@ -17,7 +17,7 @@ export const login = async (values) => {
     await signIn("credentials", {
       username,
       password,
-      redirectTo: `${DEFAULT_LOGIN_REDIRECT}`,
+      redirectTo: DEFAULT_LOGIN_REDIRECT,
     });
     return { success: "Login success!" };
   } catch (error) {
