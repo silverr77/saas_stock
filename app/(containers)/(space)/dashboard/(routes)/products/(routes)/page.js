@@ -5,11 +5,12 @@ import { File, PlusCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CardDescription, CardTitle } from "@/components/ui/card";
 
-import { columns } from "./_components/columns";
-import { DataTable } from "./_components/data-table";
-import { AddProduct } from "./_components/add-product";
+import { columns } from "./../_components/columns";
+import { DataTable } from "./../_components/data-table";
+import { useRouter } from "next/navigation";
 
 export default function Products() {
+  const router = useRouter();
   const products = [
     {
       name: "samsung",
@@ -39,6 +40,7 @@ export default function Products() {
       createdAt: "28/04/2024",
     },
   ];
+
   return (
     <div className="grid flex-1 items-start p-6">
       <CardTitle>Products</CardTitle>
@@ -52,7 +54,16 @@ export default function Products() {
             Export
           </span>
         </Button>
-        <AddProduct />
+        <Button
+          size="sm"
+          className="h-7 gap-1"
+          onClick={() => router.push("/dashboard/products/new")}
+        >
+          <PlusCircle className="h-3.5 w-3.5" />
+          <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+            Add Product
+          </span>
+        </Button>
       </div>
       <div>
         <DataTable data={products} columns={columns} />

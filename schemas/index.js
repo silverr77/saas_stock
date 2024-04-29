@@ -13,4 +13,5 @@ export const ProductSchema = z.object({
   }),
   price: z.coerce.number().min(0),
   cost: z.coerce.number().min(0),
+  description: z.string(),
 });
