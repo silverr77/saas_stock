@@ -6,3 +6,11 @@ export const LoginSchema = z.object({
     message: "Password is required",
   }),
 });
+
+export const ProductSchema = z.object({
+  name: z.string().min(4, {
+    message: "Product name is required",
+  }),
+  price: z.coerce.number().min(0),
+  cost: z.coerce.number().min(0),
+});
